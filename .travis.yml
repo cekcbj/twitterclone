@@ -1,8 +1,15 @@
 language: ruby
 rvm:
-  - 2.2.3
+- 2.2.3
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: as2d+sQv1y5PKpALLdWj+/MAXfT+CW+eXmb+ctnHGojWALm2vW3IOSULfipn1DSJH4bAmlfHHyNRp8VGbjHv4qX3xmkqT9wQJ8zJKeUWLEmp6+LAFbIrlynd9V8ZSmkk9yAE+Dzi7HtYdMbODH/XLa9Oyz8BASdfiTnOLNg1HvqXsD5u+AlLRNpGTM8I3DbWMXQ0sfcWnqFmrNPnkeAf0gUllLVgCcQYqvycZoLt0EZJJBj3zXlh69zZP989BkqGkEcwPz919JJhA5ia5OZgIjE0z8wCl8Ha2ktvsDz9r9E/TtpUKJg3gr+JaqZm4DxLkcGb3PPwxsC7TUwOgmzHdiWTtpYlnQYp5aaBTeKpVu9zQoIasbNIye5k0YFLaJISOizSy3jXrlS9Lytq59otlouXafJQq/5d4AQqDSg0sZrdUuJjRnK+ZAabo0B9WBOt2L/xCEtm2V0zXNEzhz2/0pnReiUYrefVekks2ZTzsDY0fvqrXFVZ/kI6fYG+nQan/iljSNz/HYH+SsAStCqmwu+m1fJuogtVy5dvihDf+E+/VOcM5LmiJNXbLHjtoGiWRftOBBfwY3R4imtkWVLnrbB3hv2nA3/ZC2Exj51qsjcd/bQIjTP38fCzHOlf1G0x5WhREnRysxKcUjQAadGwmmJTn/D7gsgpbXnWxRURUcE=
+  app: limitless-plains-5091
+  on:
+    repo: cekcbj/twitterclone
