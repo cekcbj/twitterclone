@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
+
   root 'homepage#index'
 
-  get 'homepage/show'
+   get 'homepage/show' => 'homepage#show'
+
+  get  'new' => 'users#new', as: :sign_up
+
+  post 'users/create' => 'users#create'
+
+  get 'sign_in' =>  'sessions#new', as: :sign_in
+
+  post 'sign_in'  => 'sessions#create'
+
+  post 'sign_out' => 'sessions#destroy', as: :sign_out
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
