@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   post 'sign_in'  => 'sessions#create'
 
-  post 'sign_out' => 'sessions#destroy', as: :sign_out
+  delete 'sign_out' => 'sessions#destroy', as: :sign_out
 
 
 

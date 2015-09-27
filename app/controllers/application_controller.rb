@@ -9,7 +9,7 @@ before_action do
 
 def authenticate_user!
   if @current_user.blank?
-    redirect_to sign_in_path, notice: "Please Sign in"
+    redirect_to sign_in_path, warning: "Please Log in"
   end
 end
 
