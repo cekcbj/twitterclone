@@ -7,6 +7,7 @@ class UserCanLoginTest < Capybara::Rails::TestCase
   me =  User.create first_name:'Byron', last_name: "Jones", email:"Byron@yahoo.com", password: "12345678"
 
     visit root_path
+    click_link "Log In"
     fill_in 'email', with:'Byron@yahoo.com'
     fill_in 'password', with:'12345678'
 
@@ -19,6 +20,7 @@ class UserCanLoginTest < Capybara::Rails::TestCase
     me =  User.create first_name:'Byron', last_name: "Jones", email:"Byron@yahoo.com", password: "12345678"
 
     visit root_path
+    click_link "Log In"
     fill_in 'email', with:'Byron@yahoo.com'
     fill_in 'password', with:'12345678'
 

@@ -6,16 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+<div class ="header-style">
+<%= render 'layouts/header' %>
+</div>
 <body>
-
-
-  <% if @current_user %>
-
-     <div>
-       <%= link_to 'Log Out', sign_out_path, method: :delete %>
-     </div>
-     <div>Hello <%= @current_user.first_name%></div>
-<% end %>
 <% flash.each do |type, content| %>
     <% if content.respond_to?('each')
         content.each do |item| %>

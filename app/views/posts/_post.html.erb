@@ -1,0 +1,10 @@
+
+
+<li id ="post">
+  <%= link_to image_tag(post.user.image, size: "50"),post.user %>
+  <span class="user"><%= link_to post.user.first_name, post.user %></span>
+  <span class="content"><%= post.tweet %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(post.posted_at) unless post.posted_at.blank?%> ago.
+  </span>
+  </li>

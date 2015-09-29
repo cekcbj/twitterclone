@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
 
      user = User.find_by email: email
      if user.try(:authenticate, password)
-      session[:user_id]= user.id
-      redirect_to root_path
+      log_in user
+      flash[:success]= "Hello #{user.first_name}"
+      redirect_to user
 
     else
       flash.now[:alert] = " Something is wrong with your login"
@@ -19,9 +20,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete :user_id
+    log_out
     flash[:notice]= "You have been logged out"
-    redirect_to root_path
+    redirect_to sign_in_path
   end
 
 end

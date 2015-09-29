@@ -1,12 +1,23 @@
 Rails.application.routes.draw do
 
+
+  get 'following/create'
+
+  post 'posts/create' => 'posts#create', as: :posts
+
+  post 'posts/destroy' => 'posts#delete'
+
   root 'homepage#index'
 
    get 'homepage/show' => 'homepage#show'
 
   get  'new' => 'users#new', as: :sign_up
 
-  post 'users/create' => 'users#create', as: :users
+  post 'users' => 'users#create', as: :users
+
+  get 'users/index' => 'users#index', as: :index
+
+  get 'users/:id' => 'users#show', as: :user
 
   get 'sign_in' =>  'sessions#new', as: :sign_in
 
@@ -14,6 +25,8 @@ Rails.application.routes.draw do
 
   delete 'sign_out' => 'sessions#destroy', as: :sign_out
 
+  post "/users/:id/follow" => "following#create", as: :follow_user
+    post "/users/:id/stop-following" => "following#delete", as: :stop_following_user
 
 
   # The priority is based upon order of creation: first created -> highest priority.

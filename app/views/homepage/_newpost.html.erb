@@ -1,0 +1,6 @@
+<%= simple_form_for @post do |f| %>
+  <div class="field">
+    <%= f.input :tweet, required: true, placeholder: "Post a new tweet" %>
+  </div>
+  <%= f.button :submit, class: "btn btn-primary btn-block" %>
+<% end %>

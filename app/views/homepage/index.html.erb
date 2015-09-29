@@ -1,1 +1,44 @@
-<h1> Welcomet to the fakest twitter youll ever meet </h1>
+<% if logged_in? %>
+<aside class="col-md-4">
+<% @user ||= current_user %>
+<div class="stats">
+  <h5><%= @user.first_name %>
+    <strong id="following" class="stat">
+      <%= @user.follow_count %>
+    </strong>
+    following
+    <strong id="followers" class="stat">
+      <%= @user.followers_count %>
+    </strong>
+    followers
+</div>
+<section class="new_post">
+        <%= render 'newpost' %>
+      </section>
+    </aside>
+</aside>
+<div class = "col-md-8">
+<ul>
+  <% @feed.each do |tweet| %>
+  <div  class = "posts" >
+    <li>
+
+  <%= link_to image_tag(tweet.user.image, size: "50"),tweet.user %>
+  <span class="user"><%= link_to tweet.user.first_name, tweet.user %></span>
+  <span class="content"><%= tweet.tweet %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(tweet.posted_at) unless tweet.posted_at.blank?%> ago.
+  </span>
+</li>
+<% end %>
+</ul>
+</div>
+
+
+<% else %>
+<div class="center jumbotron">
+    <h2>Welcome to Fake Twitter</h2>
+
+    <%= link_to "Sign up now!", sign_up_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

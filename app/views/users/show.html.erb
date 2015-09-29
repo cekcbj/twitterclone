@@ -1,0 +1,22 @@
+<aside class="col-md-4">
+   <section class="user_info">
+     <h1>
+       <%=  image_tag(@user.image, size:"80") %>
+       <%= @user.first_name %>
+       <h5><%=@user.first_name%> has (<%= @user.posts.count %>) tweets</h5>
+    <div>
+      <% if current_user.following? @user %>
+        <%= link_to "Stop Following #{@user.first_name}", stop_following_user_path(id: @user.id), method: :post %>
+      <% else %>
+        <%= link_to "Follow #{@user.first_name}", follow_user_path(id: @user.id), method: :post %>
+      <% end %>
+</div>
+ </aside>
+<div class="col-md-8">
+    <% if @user.posts.any? %>
+
+      <ol class = "posts">
+        <%= render @posts %>
+      </ol>
+    <% end %>
+  </div>
