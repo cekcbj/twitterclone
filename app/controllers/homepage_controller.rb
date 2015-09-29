@@ -10,7 +10,7 @@ end
 
 
   def index
-    @post = current_user.posts.new if logged_in?
+    @post = current_user.posts.new 
     @users = User.all
     feed
   end
