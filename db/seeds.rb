@@ -29,8 +29,6 @@ b.posts.create tweet: "Hey I dont know if this is going to work but its worth a 
 b.posts.create tweet: "This is my second post", posted_at:Faker::Time.between(DateTime.now - 14, DateTime.now)
 k.posts.create tweet: "Hellloo fake twitter this is a cool website!", posted_at: Faker::Time.between(DateTime.now - 14, DateTime.now)
 
-b.follow(f)
-f.follow(k)
 
 
 10.times do |n|
